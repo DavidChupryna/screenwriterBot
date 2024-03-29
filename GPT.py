@@ -62,6 +62,17 @@ def create_messages(params, prompt, answer):
                 'text': answer
             }
         ]
+    else:
+        messages = [
+            {
+                'role': 'user',
+                'text': prompt + config['PROMPTS']['CONTINUE'] + params
+            },
+            {
+                'role': 'assistant',
+                'text': answer
+            }
+        ]
 
     return messages
 

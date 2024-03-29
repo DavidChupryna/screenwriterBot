@@ -10,7 +10,7 @@ config['LOGGING'] = {
 
 config['GPT'] = {
     'URL': 'https://llm.api.cloud.yandex.net/foundationModels/v1/completion',
-    'IAM_TOKEN': 't1.9euelZqdmp2enp7LnouPz5CSjpGOj-3rnpWay52RlYuSns_Hx8mZlYnNlZfl9PdwZWdP-e9QdRyc3fT3MBRlT_nvUHUcnM3n9euelZqPyMfHjJ6bmJ6Qys3NxpnGjO_8xeuelZqPyMfHjJ6bmJ6Qys3NxpnGjL3rnpWajJOKyZWeic6czcqRmoyJnpC13oac0ZyQko-Ki5rRi5nSnJCSj4qLmtKSmouem56LntKMng.D72mW4fdqqtZizuJ6Mzp-7L-23984a34DQ80i9IOf2BLwF_wiIJgCQHTQYJjUwsmQUTpTotX6_Kl_ayUA2D0Cw',
+    'IAM_TOKEN': 't1.9euelZqWlZWWx5mLl42NlZKZmJCSmO3rnpWay52RlYuSns_Hx8mZlYnNlZfl9Pd8UGRP-e8pJlGH3fT3PH9hT_nvKSZRh83n9euelZrNnJKakJLMys2PkMeUmpWYmu_8xeuelZrNnJKakJLMys2PkMeUmpWYmr3rnpWazcqLz5adzMzJipqMip6ck4613oac0ZyQko-Ki5rRi5nSnJCSj4qLmtKSmouem56LntKMng.orju17cwYHy9FmG0f6DD70Q-XjZh2HuwH7mYdwu_TdRSAvPFGx8mVKsLoM0sdZyv5pTbHVi-UiH63QR7Bi_2CQ',
     'TEMPERATURE': '0.6',
     'MAX_TOKENS': '64',
     'TOKENIZE_URL': 'https://llm.api.cloud.yandex.net/foundationModels/v1/tokenizeCompletion',

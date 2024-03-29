@@ -191,8 +191,7 @@ def generate_story(message):
                         users[user_id]['answer'], now_time)
 
             bot.send_message(message.chat.id, gpt_response['message'])
-            bot.send_message(message.chat.id, 'Конец! Для получения полной истории, '
-                                              'воспользуйтес командой /full_story', reply_markup=ReplyKeyboardRemove())
+            bot.send_message(message.chat.id, f'Конец! {bot_messages['full_story']} ', reply_markup=ReplyKeyboardRemove())
             return
         else:
             gpt_response = send_request(messages)
@@ -201,7 +200,7 @@ def generate_story(message):
 
             if current_tokens < 0:
                 bot.send_message(message.chat.id, 'У вас закончились токены')
-                bot.send_message(message.chat.id, 'Воспользуйтес командой /full_story')
+                bot.send_message(message.chat.id, bot_messages['full_story'])
                 return
 
             users[user_id]['full_story'] += " " + gpt_response['message']
@@ -217,6 +216,8 @@ def generate_story(message):
 
             bot.send_message(message.chat.id, 'Генерирую ...', reply_markup=keyboard)
             bot.send_message(message.chat.id, gpt_response['message'])
+            bot.send_message(message.chat.id, 'Можете продолжить или закончить историю. Так же вы можете писать '
+                                              'историю совместно с ботом, для этого нужно написать пожелания в чат.')
             bot.send_message(message.chat.id,
                              f'У вас осталось {current_tokens} токенов из {config['LIMITS']['MAX_TOKEN_IN_SESSION']} ')
             bot.register_next_step_handler(message, generate_story)
