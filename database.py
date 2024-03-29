@@ -1,6 +1,6 @@
+import logging
 import sqlite3
 from config import config
-from datetime import datetime
 
 
 def create_stories_table():
@@ -22,9 +22,9 @@ def create_stories_table():
             answer TEXT,
             time TEXT);
         ''')
-        print('table was created')
+        logging.info('table was created')
     except sqlite3.Error as error:
-        print(f'Error database:', error)
+        logging.error(f'Error database:', error)
     finally:
         con.close()
 
@@ -38,7 +38,7 @@ def limit_users():
         for i in result:
             count += 1
     except Exception as error:
-        print("Database error", error)
+        logging.error("Database error", error)
     finally:
         con.close()
         return count >= int(config['LIMITS']['MAX_USERS'])
@@ -51,10 +51,10 @@ def insert_data(user_id=None, name=None, sessions=0, tokens=None, character=None
         cur.execute(f'INSERT INTO stories(user_id, name, sessions, tokens, character, world, genre, additional, task, answer, time)'
                     f'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
                     (user_id, name, sessions, tokens, character, world, genre, additional, task, answer,  time,))
-        print('data is written to the database')
+        logging.info('data is written to the database')
         con.commit()
     except sqlite3.Error as error:
-        print(f'Error database:', error)
+        logging.error(f'Error database:', error)
     finally:
         con.close()
 
@@ -70,10 +70,10 @@ def check_user_in_db(user_id):
                     LIMIT 1
                 ''', (user_id,))
         result = query.fetchall()
-        print('get data from database')
+        logging.info('get data from database')
         return bool(result)
     except sqlite3.Error as error:
-        print('Error database', error)
+        logging.error('Error database', error)
     finally:
         con.close()
 
@@ -92,7 +92,7 @@ def get_last_session(user_id):
         result = query.fetchall()
         return result[0][0]
     except sqlite3.Error as error:
-        print('Error database', error)
+        logging.error('Error database', error)
     finally:
         con.cursor()
 
@@ -105,8 +105,8 @@ def update_data(user_id, column, value):
                     f'SET {column} = ? '
                     f'WHERE user_id = ?;', (value, user_id))
         con.commit()
-        print('data has been updated')
+        logging.info('data has been updated')
     except sqlite3.Error as error:
-        print('Error database:', error)
+        logging.error('Error database:', error)
     finally:
         con.close()
